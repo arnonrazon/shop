@@ -1,0 +1,24 @@
+<h1>Shop for Drinks!</h1>
+
+<link href="bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-theme.min.css" rel="stylesheet">
+
+<%= link_to "Look at your Cart", :controller => :cart, :action => :index%>
+<table class="table">
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= image_tag item.image_url %></td>
+		<td>
+        <div class = "title"><h3><%= item.title %></h3></div>
+		<div class = "price"><h3><small><%= item.price %></small></h3></div>
+		<%= button_to "Add to Cart", to_cart_path(item) %>
+        <!--<td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+		</td>
+	<% end %>
+</table>
+
+<br>
+
+<!--<%= link_to 'New Item', new_item_path %>-->

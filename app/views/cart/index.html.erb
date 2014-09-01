@@ -1,0 +1,28 @@
+<h1>Your Cart</h1>
+
+<link href="bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-theme.min.css" rel="stylesheet">
+
+<table class = "table">
+	<% @cart.contents.each do |content| %>
+	<tr>
+		<td><%= image_tag content.image_url %></td>
+		<td>
+        <div><h3><%= content.title %></h3></div>
+		<div><h3><small><%= content.price %>  x  <%= content.quantity %></small></h3></div>
+		<%= button_to "Remove from Cart", from_cart_path(content) %>
+        </td>
+		<td><h5><%= content.full_price %></h5></td>
+	</tr>
+	<% end %>
+</table>
+
+<table class = "table">
+	<tr class = "success">
+	<td></td>
+	<td><h4>Total</h4></td>
+	<td><h4><%= @cart.total_price %></h4></td>
+	</tr>
+</table>
+
+<%= link_to "Back to Shopping List", :controller => :items, :action => :index%>
